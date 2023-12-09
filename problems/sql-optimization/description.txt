@@ -4,9 +4,11 @@ Imagine we have a table named Orders with columns OrderID, CustomerID, OrderDate
 
 Original Query:
 
+<pre>
 SELECT *
 FROM Orders
 WHERE CustomerID = 1234
 AND Amount > 100;
+</pre>
 
 This query scans all rows in the Orders table, regardless of the CustomerID or Amount. This is inefficient, especially if the table contains millions of rows.

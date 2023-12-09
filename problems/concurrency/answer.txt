@@ -1,0 +1,17 @@
+Make it thread-safe using mutex or atomic
+
+<pre>
+public class Counter {
+    private int count;
+
+    public void increment() {
+        // Lock here
+        count++;
+    }
+
+    public int getCount() {
+        // Lock here
+        return count;
+    }
+}
+</pre>

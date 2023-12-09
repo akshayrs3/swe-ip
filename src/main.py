@@ -1,25 +1,28 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from pathlib import Path
 
 import globals
 
 app = Flask(__name__)
 
-# Function to read problem text from a file
-def read_problem_text(problem_name):
-    problem_path = Path(f'{globals.PATH_TO_PROBLEMS}/{problem_name}/description.txt')
-    print(problem_path)
-    if problem_path.is_file():
-        with open(problem_path, 'r') as file:
-            return file.read()
-    else:
-        return f"Problem '{problem_name}' not found."
 
 @app.route('/problems/<problem_name>', methods=['GET'])
 def get_problem(problem_name):
-    print(problem_name)
-    problem_text = read_problem_text(problem_name)
+    problem_text = globals.read_problem_description(problem_name)
     return render_template('problem.html', problem_name=problem_name, problem_text=problem_text)
+
+@app.route('/reveal_answer', methods=['POST'])
+def reveal_answer():
+    problem_name = request.form['problem_name']
+
+    # Logic to read the answer from answer.txt file
+    answer_text = globals.read_problem_answer(problem_name)
+    problem_text = globals.read_problem_description(problem_name)
+    print(answer_text)
+    print(problem_text)
+
+    return render_template('problem.html', problem_name=problem_name, problem_text=problem_text, answer_text=answer_text)
+
 
 @app.route('/', methods=['GET'])
 def get_files_info():
