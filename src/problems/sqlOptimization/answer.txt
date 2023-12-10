@@ -1,7 +1,0 @@
-Create an index on the CustomerID and Amount columns. This allows the database engine to quickly identify relevant rows based on these criteria.
-
-CREATE INDEX IX_Orders_CustomerID_Amount ON Orders (CustomerID, Amount);
-
-Benefits:
-
-The optimized query utilizes the index to efficiently locate the desired rows. This dramatically reduces the number of rows scanned, leading to faster query execution times.
