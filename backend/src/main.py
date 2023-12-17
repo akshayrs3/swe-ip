@@ -1,6 +1,7 @@
+from pathlib import Path
+
 from flask import Flask, jsonify
 from flask_cors import CORS
-from pathlib import Path
 
 import globals
 
@@ -12,6 +13,12 @@ CORS(app)
 def get_problem_description(problem_name):
     problem_description = globals.read_problem_description(problem_name)
     return jsonify({"problem_name": problem_name, "problem_description": problem_description})
+
+
+@app.route('/problems/<problem_name>/solution', methods=['GET'])
+def get_problem_solution(problem_name):
+    problem_solution = globals.read_problem_answer(problem_name)
+    return jsonify({"problem_name": problem_name, "problem_solution": problem_solution})
 
 
 @app.route('/', methods=['GET'])
