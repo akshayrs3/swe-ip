@@ -15,11 +15,11 @@ const ProblemList = () => {
 
   return (
     <div>
-      <h1>List of Titles</h1>
+      <h1>Problems</h1>
       <ul>
         {
             titles.map((title, index) => (
-              <li key={index}><Link to={`/problems/${title.name}`}>{title.name}</Link></li>
+              <li key={index}><Link to={`/problems/${title}`}>{title}</Link></li>
             ))
         }
       </ul>

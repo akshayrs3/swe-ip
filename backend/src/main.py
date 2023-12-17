@@ -7,10 +7,12 @@ import globals
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route('/problems/<problem_name>', methods=['GET'])
 def get_problem_description(problem_name):
     problem_description = globals.read_problem_description(problem_name)
-    return jsonify({"problem_name":problem_name, "problem_description":problem_description})
+    return jsonify({"problem_name": problem_name, "problem_description": problem_description})
+
 
 @app.route('/', methods=['GET'])
 def get_problem_list():
@@ -19,13 +21,10 @@ def get_problem_list():
 
     for path in base_path.iterdir():
         if path.is_dir():
-            problem_list.append({
-                'name': path.name,
-                'type': 'directory',
-                'contents': [p.name for p in path.iterdir() if p.is_file()]
-            })
+            problem_list.append(path.name)
 
     return jsonify(problem_list)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
