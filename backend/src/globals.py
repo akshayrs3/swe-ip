@@ -1,7 +1,8 @@
 from pathlib import Path
 
 # paths
-PATH_TO_PROBLEMS="../problems"
+PATH_TO_PROBLEMS = "../problems"
+
 
 # Function to read problem text from a file
 def read_problem_description(problem_name):
@@ -11,6 +12,7 @@ def read_problem_description(problem_name):
             return file.read()
     else:
         return f"Problem '{problem_name}' not found."
+
 
 def read_problem_answer(problem_name):
     problem_answer_path = Path(f'{PATH_TO_PROBLEMS}/{problem_name}/answer.txt')
