@@ -1,38 +1,17 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CodeIcon from '@mui/icons-material/Code';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-// TODO: Should we use Link from router-dom or mui?
-import { Link } from 'react-router-dom';
-// import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/akshayrs3">
-        Akshay
-      </Link>{' '}
-      {'  /  '}
-      <Link color="inherit" href="https://github.com/theAB316">
-        Aneesh
-      </Link>{' '}
-    </Typography>
-  );
-}
+
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -52,15 +31,6 @@ export default function ProblemList () {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CodeIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            ByteCode
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
 
         {/* Hero unit */}
@@ -123,14 +93,7 @@ export default function ProblemList () {
             ))}
           </Grid>
         </Container>
-      </main>
-
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Copyright />
-      </Box>
-      {/* End footer */}
-      
+      </main>      
     </ThemeProvider>
   );
 }
