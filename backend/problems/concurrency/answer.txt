@@ -1,6 +1,6 @@
 Make it thread-safe using mutex or atomic
 
-<pre>
+```
 public class Counter {
     private int count;
 
@@ -14,4 +14,4 @@ public class Counter {
         return count;
     }
 }
-</pre>
+```

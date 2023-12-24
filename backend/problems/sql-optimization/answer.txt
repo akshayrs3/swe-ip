@@ -1,3 +1,5 @@
 Create an index on the CustomerID and Amount columns. This allows the database engine to quickly identify relevant rows based on these criteria.
 
+```
 CREATE INDEX IX_Orders_CustomerID_Amount ON Orders (CustomerID, Amount);
+```
