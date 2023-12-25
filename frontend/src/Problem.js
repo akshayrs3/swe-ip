@@ -11,8 +11,11 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // Custom
+import CodeEditor from './CodeEditor';
 import MarkDownDisplayer from './MarkDownDisplayer';
+import VerticalSpace from './Utils';
 
+// Important global variables
 const defaultTheme = createTheme();
 
 const Problem = () => {
@@ -46,6 +49,15 @@ const Problem = () => {
     setShowSolution(!showSolution); // Toggle the showSolution state
   }
 
+  // A callback function that is passed to the CodeEditor component, so that its content can be retrieved and processed
+  const processUserSolution = (userSolution) => {
+    // TODO: 
+    // 1. replace this with some database operation?
+    // 2. add input sanitization
+    alert("Processing user solution: " + userSolution)
+    console.log("Processing user solution: " + userSolution);
+  }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <main>
@@ -68,14 +80,15 @@ const Problem = () => {
         {/* End hero unit */}
 
         <Container maxWidth="lg">
-          <Typography variant="h4" align="left" paragraph>
-            Problem statement
-          </Typography>
 
+          {/* Code Editor */}
+          <Typography variant="h4" align="left" paragraph>Code Editor</Typography>
+          <CodeEditor callbackOnEditorContent={processUserSolution} />
+          <VerticalSpace />
+
+          <Typography variant="h4" align="left" paragraph>Problem statement</Typography>
           <MarkDownDisplayer markdownContent={problem.problem_description} />
-
-          {/* vertical space */}
-          <Container sx={{ py: 2 }} maxWidth="md"></Container>
+          <VerticalSpace />
 
           {/* Show answer if the button is clicked i.e the showSolution variable is set */}
           {showSolution && 
